@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html style="background-color:DodgerBlue;" lang="en">
+
+<head>
+        <title>dog pics</title>
+        
+    <meta charset="utf-8">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body style="background-color:lightblue;">
+
+        <div class="container">
+                <div class="row">
+                        <div class="col-sm">
+
+                  <h3 style="color:DodgerBlue;">Search for Dog Pictures</h3>
+                <button onclick="breedAlert()" style="background-color:DodgerBlue;">list of breeds</button>
+                <p id="breeds"></p>
+                <input type='text' id="breed" placeholder="search a breed">
+                <input type="button" onclick="searchForADog();" value="search" style="background-color:DodgerBlue;">
+                <p id="output"> </p>
+
+
+                <p style="color:white;">link to API used for this site: https://dog.ceo/dog-api/</p>
+
+                 <script>
+                    function searchForADog() {
+                        let breed = document.getElementById('breed').value;
+                        console.log(breed);
+                        let url = 'https://dog.ceo/api/breed/' + breed + '/images/random';
+                        fetch(url)
+                            .then((message) => {
+                                return message.json();
+                            })
+                            .then((myJson) => {
+                                console.log(myJson);
+                                let outputs = myJson.message;
+                                let p = document.getElementById('output')
+                                p.innerHTML = "<img src=" + myJson.message + ">"
+
+                            });
+
+                    }
+
+                    function breedAlert() {
+                        alert("affenpinscher, african, airedale, akita, appenzeller, australian, basenji, beagle, bluetick, borzoi, bouvier, boxer, brabancon, briard, buhund, bulldog, bullterrier, cairn, cattledog, chihuahua, chow, clumber, cockapoo, collie, coonhound, corgi, cotondetulear, dachshund, dalmatian, dane, deerhound, dhole, dingo, doberman, elkhound, entlebucher, eskimo, frise, germanshepherd, greyhound, groenendael, havanese, hound, husky, keeshond, kelpie, komondor, kuvasz, labrador, leonberg, lhasa, malamute, malinois, maltese, mastiff, mexicanhairless, mix, mountain, newfoundland, otterhound, papillon, pekinese, pembroke, pinscher, pitbull, pointer, pomeranian, poodle, pug, puggle, pyrenees, redbone, retriever, ridgeback, rottweiler, saluki, samoyed, schipperke, schnauzer, setter, sheepdog, shiba, shihtzu, spaniel, springer, stbernard, terrier, vizla, waterdog, weimaraner, whippet, wolfhound");
+                    }
+                </script>
+
+                            
+            </div>
+                    </div>
+            </div>
+</body></html>
